@@ -20,6 +20,9 @@ jobs:
       - name: show python version
         run: python --version
 
+      - name: Install required dependencies
+        run: pip install pandas
+
       - name: run extract.py
         run: python extract.py
 
