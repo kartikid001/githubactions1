@@ -12,6 +12,9 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
+      - name: show python version
+        run: python --version
+
       - name: run extract.py
         run: python extract.py
 
