@@ -8,12 +8,27 @@ on:
 #defines jobs:
 jobs:
   test-job:
+    runs-on: ubuntu-latest
     steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: setup python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.10"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
       - name: run test cases
-        run: pytest --cov=calc --cov-report=term --cov-fail-under=80
+        run: pytest --cov=calc --cov-report=term --cov-report=html --cov-fail-under=80
+
+      - name: download code coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-code-coverage-report
+          path: htmlcov/
 
   deploy-job:
     runs-on: ubuntu-latest
