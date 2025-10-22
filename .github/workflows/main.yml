@@ -26,16 +26,10 @@ jobs:
 
   deploy-job:
     runs-on: ubuntu-latest
-    needs: test-jobsteps:
+    needs: test-jobsteps
     steps:
       - name: print message
         run: echo "Deploy job started..."
-
-
-
-
-
-        
 # name: ETL Pipeline Demo
 
 # on:
